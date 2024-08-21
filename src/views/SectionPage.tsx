@@ -13,7 +13,7 @@ export default function SectionPage({section, image} : {section: string, image: 
     return (
     <Layout title={section}>
         <Categories/>
-        <img src={image} alt="" />
+        <img src={image} alt="" className="w-full"/>
         <div className="mx-auto min-h-screen px-[15px] lg:px-5 lg:max-w-[940px] max-w-md">
         <div className="w-full text-center lg:mt-6 mt-3 border-b border-primary-500"><h1 className="lg:text-4xl text-3xl font-black text-primary-600 mb-2">{section}</h1></div>
         <ProductSection title="Alimento" section={section}/>
