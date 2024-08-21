@@ -9,7 +9,7 @@ export default function Layout({ title, children } : { title: string, children: 
 
     return(<>
     <Header/>
-    <main>
+    <main className="mx-auto px-[15px] lg:px-5 lg:max-w-[940px] max-w-md">
     {children}
     </main>
     </>)

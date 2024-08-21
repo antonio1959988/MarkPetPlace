@@ -8,22 +8,26 @@ export default {
     extend: {
       colors: {
         primary: {
-          100: "#FFFDF5",
+          100: "",
+          200: "#FAE6B1",
           400: "#FFA101",
-          300: "#B3DEE5",
+          //300: "#B3DEE5",
           800: "472922",
-          200: "#ffffff",
+          700: "#ffffff",
           600: "#f06b30",
-          500: "#FF862F",
-          700: "#FAE6B1",
+          300: "#FBB72C",
+          500: "#FF862F",  // orange
           900: "#B3DEE5",
           50: "#7b7b7b92"
         },
         secondary: {
-          100: "#472922",
-          200: "#61c2d1",
-          300: "#949494",
-          400: "#"
+          50: "#CCCCCC", // Category
+          100: "#999999", // Author
+          200: "#FFFDF5", // bg
+          300: "#fffdf521", // bg-menu
+          500: "#949494",
+          400: "#61c2d1", 
+          900: "#472922", // Text big
         }
       },
       maxWidth: {
