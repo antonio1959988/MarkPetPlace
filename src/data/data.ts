@@ -1,4 +1,4 @@
-export const getProducts = async (): Promise<Product[] | undefined> => {
+export const getProducts = async (): Promise<Product[]> => {
 
     const ids = [
         "MLM2197207340", 
@@ -12,6 +12,35 @@ export const getProducts = async (): Promise<Product[] | undefined> => {
             return res;
     } catch (error) { 
         console.log(error);
+        return [];
+    }
+}
+
+export const searchProducts = async (search : string): Promise<Product[]> => {
+    try {
+        const url = `https://api.mercadolibre.com/sites/MLM/search?q&q=para+${search}`;
+        const res: Response = await fetch(url).catch(err => {
+            console.log(err)
+            return new Response(null)
+        })
+
+        const products = await res.json();
+
+        const product: Product[] = products.results.map((p) => {
+            return {
+                id: p.id,
+                title: p.title,
+                price: p.price,
+                thumbnail: p.thumbnail,
+                link: p.permalink,
+                author: p.official_store_name ?? p.seller.nickname ?? null
+            }
+        })
+        return product;
+
+    } catch (error) {
+        console.log(error);
+        return [];
     }
 }
 
@@ -20,7 +49,9 @@ export type Product = {
     id: string,
     title: string,
     price: number,
-    thumbnail: string
+    thumbnail: string,
+    link: string,
+    author: string
 
 };
 
@@ -42,7 +73,9 @@ const getProductById = async (id: string): Promise<Product> => {
             id: data.id,
             title: data.title,
             price: data.price,
-            thumbnail: data.thumbnail
+            thumbnail: data.thumbnail,
+            link: data.permalink,
+            author: data.official_store_name ?? data.seller.nickname ?? null
         }
     return product;
 }
