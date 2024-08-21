@@ -2,14 +2,14 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Product, searchProducts } from "../data/data";
 import { useEffect, useState } from "react";
 
-export default function ProductSection({ title } : {title : string}){
+export default function ProductSection({ title, section } : {title : string, section?: string}){
 
     const [products, setProducts] = useState<Product[]>();
 
     const getProductsData = async () => {
 
         // Dynamic search products
-        const productsAPI: Product[] = await searchProducts(title).then(res => res );
+        const productsAPI: Product[] = await searchProducts(title, section).then(res => res );
 
         // CUstom products form array ids
         //const productsAPI: Product[] = await getProducts().then((res) => res);
@@ -27,12 +27,16 @@ export default function ProductSection({ title } : {title : string}){
                 <p className="mb-6 text-lg">Productos destacados</p>
 
                 <Swiper
-                    slidesPerView={2}
+                    slidesPerView={1}
                     spaceBetween={10}
                     pagination={{
                         clickable: true,
                     }}
                     breakpoints={{
+                        375: {
+                            slidesPerView: 2,
+                            spaceBetween: 20,
+                        },
                         1024: {
                             slidesPerView: 4,
                             spaceBetween: 20,
@@ -44,8 +48,8 @@ export default function ProductSection({ title } : {title : string}){
                         <SwiperSlide>
                         <a href={p.link} target="_blank" id={p.id} key={p.id}>
                         <div className=" border-primary-400 border overflow-hidden rounded-2xl bg-white text-black">
-                            <div className="overflow-hidden block min-h-52">
-                            <img className="hover:scale-125 duration-200 transition w-full h-auto" src={p.thumbnail} alt="" />
+                            <div className="overflow-hidden block h-52">
+                            <img className="hover:scale-125 duration-200 transition h-full mx-auto block w-auto" src={p.thumbnail} alt="" />
                             </div>
                             <div className=" border-b border-secondary-50 mx-3 py-2 text-left">
                                 <h3 className="uppercase font-semibold leading-6 text-base mb-2.5 mt-2 min-h-[72px] line-clamp-3">{p.title}</h3>
@@ -69,6 +73,10 @@ export default function ProductSection({ title } : {title : string}){
                     </SwiperSlide>
                     </>)}
                 </Swiper>
+
+                {!section && <a href={`/${title.toLowerCase()}`}>
+                <p className="w-full underline text-primary-400 font-bold text-xl mt-3 lg:mt-6">Ver más</p>
+                </a>}
             </div>
     )
 }

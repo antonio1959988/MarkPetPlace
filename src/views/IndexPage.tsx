@@ -11,33 +11,15 @@ import 'swiper/css/navigation';
 // import required modules
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import ProductSection from "../components/ProductSection.tsx";
+import Categories from "../layouts/Categories.tsx";
 
 export default function IndexPage() {
 
 
     return (
         <Layout title={"MarkPetPlace"}>
-            <div className="w-full text-center my-3 lg:my-6">
-                <h1 className="lg:text-3xl text-2xl font-black text-secondary-900 mb-5">Selecciona tu mascota 🧡</h1>
-                <div className=" grid grid-cols-2 lg:grid-cols-4 *:my-1 *:lg:my-2.5">
-                    <div>
-                        <img className="lg:w-24 w-20 mx-auto mb-1 lg:mb-2.5 rounded-full hover:bg-primary-400 transition duration-200 bg-primary-200 p-2" src="/img/iconos/icon_perro.svg" alt="" />
-                        <span className="lg:text-xl text-lg font-bold text-secondary-900">Perros</span>
-                    </div>
-                    <div>
-                        <img className="lg:w-24 w-20 mx-auto mb-1 lg:mb-2.5 rounded-full hover:bg-primary-400 transition duration-200 bg-primary-200 p-2" src="/img/iconos/icon_gato.svg" alt="" />
-                        <span className="lg:text-xl text-lg font-bold text-secondary-900">Gatos</span>
-                    </div>
-                    <div>
-                        <img className="lg:w-24 w-20 mx-auto mb-1 lg:mb-2.5 rounded-full hover:bg-primary-400 transition duration-200 bg-primary-200 p-2" src="/img/iconos/icon_pez.svg" alt="" />
-                        <span className="lg:text-xl text-lg font-bold text-secondary-900">Peces</span>
-                    </div>
-                    <div>
-                        <img className="lg:w-24 w-20 mx-auto mb-1 lg:mb-2.5 rounded-full hover:bg-primary-400 transition duration-200 bg-primary-200 p-2" src="/img/iconos/icon_conejo.svg" alt="" />
-                        <span className="lg:text-xl text-lg font-bold text-secondary-900">Conejos</span>
-                    </div>
-                </div>
-            </div>
+            <div className="mx-auto min-h-screen px-[15px] lg:px-5 lg:max-w-[940px] max-w-md">
+            <Categories title={"Selecciona tu mascota 🧡"}/>
             <div className="text-secondary-900 lg:text-white">
                 <Swiper
                     centeredSlides={true}
@@ -92,12 +74,13 @@ export default function IndexPage() {
                 </Swiper>
             </div>
             <div className="w-full text-center lg:mt-6 mt-3 border-b border-primary-500">
-                <h1 className="lg:text-3xl text-2xl font-black text-primary-600 mb-2">Mercadito</h1>
+                <h1 className="lg:text-4xl text-3xl font-black text-primary-600 mb-2">Mercadito</h1>
             </div>
             <ProductSection title="Perros"/>
             <ProductSection title="Gatos"/>
             <ProductSection title="Peces"/>
             <ProductSection title="Conejos"/>
+            </div>
         </Layout>
     )
 }

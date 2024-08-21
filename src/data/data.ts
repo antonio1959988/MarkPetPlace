@@ -16,9 +16,16 @@ export const getProducts = async (): Promise<Product[]> => {
     }
 }
 
-export const searchProducts = async (search : string): Promise<Product[]> => {
+export const searchProducts = async (search : string, section?: string): Promise<Product[]> => {
     try {
-        const url = `https://api.mercadolibre.com/sites/MLM/search?q&q=para+${search}`;
+        let url = `https://api.mercadolibre.com/sites/MLM/search?q&q=para+${search}`;
+
+        if(section){
+            url = `https://api.mercadolibre.com/sites/MLM/search?q&q=${search}+para+${section}+mascota`;
+        }
+
+        console.log(url)
+
         const res: Response = await fetch(url).catch(err => {
             console.log(err)
             return new Response(null)
@@ -31,7 +38,7 @@ export const searchProducts = async (search : string): Promise<Product[]> => {
                 id: p.id,
                 title: p.title,
                 price: p.price,
-                thumbnail: p.thumbnail,
+                thumbnail: `https://http2.mlstatic.com/D_NQ_NP_${p.thumbnail_id}-O.webp`,
                 link: p.permalink,
                 author: p.official_store_name ?? p.seller.nickname ?? null
             }
@@ -73,7 +80,7 @@ const getProductById = async (id: string): Promise<Product> => {
             id: data.id,
             title: data.title,
             price: data.price,
-            thumbnail: data.thumbnail,
+            thumbnail: `https://http2.mlstatic.com/D_NQ_NP_${data.thumbnail_id}-O.webp`,
             link: data.permalink,
             author: data.official_store_name ?? data.seller.nickname ?? null
         }

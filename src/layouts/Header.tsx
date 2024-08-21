@@ -16,8 +16,8 @@ export default function Header() {
     }
 
     return (<>
-        <header className="text-white">
-            <nav className="justify-between text-center w-full bg-primary-500 lg:flex font-semibold px-[10px]">
+        <header className="text-white relative h-12 ">
+            <nav className="justify-between fixed z-20 top-0 text-center w-full bg-primary-500 lg:flex font-semibold px-[10px]">
                 <div className="flex relative justify-center items-center ">
                     <button type="button" className="items-center p-2 absolute left-0 justify-center text-white rounded-lg lg:hidden focus:outline-none focus:ring-2 focus:ring-gray-200 my-2" aria-expanded="false" onClick={toggleMenu} id="menu-button">
                         <span className="sr-only">Open main menu</span>
@@ -42,10 +42,10 @@ export default function Header() {
                             </svg>
                         </div>
                         <ul id="navbar-dropdown" className=" *:*:py-2 hidden border-[2px] bg-primary-500 w-full border-secondary-300 lg:absolute">
-                            <a href="/"><li className="hover:text-black hover:underline hover:bg-secondary-300 transition duration-200">Perros</li></a>
-                            <a href="/"><li className="hover:text-black hover:underline hover:bg-secondary-300 transition duration-200">Gatos</li></a>
-                            <a href="/"><li className="hover:text-black hover:underline hover:bg-secondary-300 transition duration-200">Peces</li></a>
-                            <a href="/"><li className="hover:text-black hover:underline hover:bg-secondary-300 transition duration-200">Conejos</li></a>
+                            <a href="/perros"><li className="hover:text-black hover:underline hover:bg-secondary-300 transition duration-200">Perros</li></a>
+                            <a href="/gatos"><li className="hover:text-black hover:underline hover:bg-secondary-300 transition duration-200">Gatos</li></a>
+                            <a href="/peces"><li className="hover:text-black hover:underline hover:bg-secondary-300 transition duration-200">Peces</li></a>
+                            <a href="/conejos"><li className="hover:text-black hover:underline hover:bg-secondary-300 transition duration-200">Conejos</li></a>
                         </ul>
                     </div>
                     <a href="/"><li className="hover:text-black hover:underline hover:bg-secondary-300 transition duration-200 lg:hidden">Iniciar Sesión</li></a>
